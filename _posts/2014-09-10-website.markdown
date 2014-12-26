@@ -1,0 +1,8 @@
+---
+title: This website
+tags: project
+date: 2014-09-10
+description: What you are on right now.
+---
+
+This website is generated with [Hakyll](http://github.com/jaspervdj/hakyll), a static-site generator written in [Haskell](http://www.haskell.org).

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" type="text/css" href="/css/default.css" />
+        <link href="http://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400italic,700,400" rel="stylesheet" type="text/css" />
+        <title>jgLukasik - Online remote</title>
+    </head>
+    <body>
+      <div id="container">
+      <img class="logo" src="/images/JosephLukasik.jpg">
+        <div id="navigation">
+            <a href="/projects">Projects</a>
+            <a href="/blog">Blog</a>
+            <a href="/about">About</a>
+        </div>
+        <div style="clear: both;"></div>
+      </div>
+        <header>
+          <div id="parent">
+            <div id="title">
+              Online remote
+            </div>
+            <div id="home">
+                <a href="/">jgLukasik</a>
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+        </header>
+
+        <div id="content">
+          <p>Check it out <a href="http://tv.jglukasik.com">here</a>.</p>
+
+<p>(It won’t do anything unless you are on our apartment’s network, though.)</p>
+
+<h2 id="how-a-remote-works">How a remote works</h2>
+<p>You want to turn up the volume, but you don’t want to go to the TV. So you pick
+up a remote control and push a button. When you push that button, the little
+light at the end of the remote flashes with a series of short pulses. Each
+button gives a different pattern of flashes, and these flashes are in the
+infrared spectrum, so you can’t see them. The TV has an infrared receiver that
+can see the flashes, and translates that into a command to turn the volume up.</p>
+
+<p>That’s a pretty good system, but here were my problems with it:</p>
+
+<ul>
+  <li>The remote needs a line of sight to the TV receiver, or the flashes won’t be
+seen</li>
+  <li>We only have one remote, and sometimes it gets eaten by the couch or stolen by
+imps</li>
+  <li>I’m too lazy to get up and grab the remote if I’m already sitting down  </li>
+</ul>
+
+<p>So I made something better, an online remote control.</p>
+
+<h2 id="what-i-made">What I made</h2>
+<p>The first thing I needed to do was learn what the remote codes for my TV were. I
+used an Arduino connected to an infrared receiver, along with Ken Shirriff’s
+<a href="https://github.com/shirriff/Arduino-IRremote">Arduino-IRremote</a> library, to
+record the code for each button on my TV remote. Remember, these codes respond to
+a sequence of infrared pulses sent by the remote and read by the TV. For my Apex
+TV, the remote uses the <a href="http://techdocs.altium.com/display/FPGA/NEC+Infrared+Transmission+Protocol">NEC Infrared Transmission
+Protocol</a> 
+to transmit an 8-bit command to the TV. I then made a Perl module containing a 
+hash of key-value pairs for each button and its corresponding code value. Now I
+have all of the codes for any command on my remote at my disposal.</p>
+
+<p>The next thing I need is something to take those codes, and translate them into
+infrared LED flashes. To do this, I used a <a href="http://spark.io">Spark Core</a>, a tiny
+WiFi-connected microcontroller. I put this on a breadboard and hooked it up to
+an IR LED, and then plugged it in with a micro-USB for power. The Core can be
+easily set up with your home WiFi network with an accompanying smartphone app,
+and once it is online you can use their cloud-based IDE to write code for it and
+flash it onto the device over the internet. Again using Shirriff’s IR library, I
+wrote a small function shown here:</p>
+
+<pre><code>int input(String args){
+  int code = args.toInt();
+  irsend.sendNEC(code, 32);
+  return code;
+}
+</code></pre>
+
+<p>This function accepts a string for the remote code, and then uses that IR
+library to flash the IR LED connected to the D0 pin on the core. So now we have
+all the codes, and a way to translate those codes into IR flashes. Awesome!</p>
+
+<p>The next thing we need is a way to send those codes to the Spark Core from any
+internet-connected device, like my phone or laptop. All Spark Core’s connected
+to the internet come with a REST API, which is a way to control the device
+through HTTP, the protocol you use to access the web. This could be the end, I
+could directly access the Spark Core by directing my browsers to the correct
+URLs for every action, but that would be a little crude. Instead, I’ll throw on
+one more abstraction layer with a small Perl program.</p>
+
+<p>This program will be whats behind the web page that you can visit. In it, I will
+no longer be listening for remote codes like the Spark Core, but I will listen
+for pre-defined “actions.” These actions can be as simple as “power,” which will
+look up the remote code for the power button and send that, or they can be more
+complex. “Volume up” will take an arbitrary integer n after it, and then send 
+n+1 “volume up” codes, one to turn on the volume bar, and then n presses to
+raise the volume. “XBox” will press the “TV” button followed by two presses of
+“hdmi” to ensure that the TV will end on the HDMI input 2 every time, regardless
+of what input it had at the start. As you can see, this extra abstraction layer
+allows for more complex commands without worrying about the gritty details of
+the button codes being sent. In this program I can fine tune details like
+timing: how shortly after a button press with the TV accept another? I also
+implement a small “security” feature, where only requests coming from my
+apartment’s IP address are accepted. </p>
+
+<p>Now there is only one step left, and that is making the website. I used
+<a href="http://getbootstrap.com">Bootstrap</a> to quickly and easily make a nice looking
+website with no web design skills whatsoever. Bootstrap comes with pre-made CSS
+for nice looking buttons, and support for multiple device sizes with its grid
+system. After brushing up a little on AJAX, I had a small site where you could
+press a button on the site, some Javascript throws a GET request to my Perl
+program, that program gives button codes to the Spark Core, the IR LED
+flashes, and the TV turn on.</p>
+
+<p><img src="/images/SparkRemote.jpg" alt="Here's a picture of the remote next to my TV" /></p>
+
+        </div>
+
+        <footer></footer>
+    </body>
+    </body>
+</html>

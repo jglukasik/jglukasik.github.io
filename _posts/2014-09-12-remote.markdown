@@ -1,0 +1,94 @@
+---
+title: Online remote
+tags: project
+date: 2014-09-12
+description: A webapp to control my apartment's TV. 
+---
+
+Check it out [here](http://tv.jglukasik.com).
+
+(It won't do anything unless you are on our apartment's network, though.)
+
+## How a remote works
+You want to turn up the volume, but you don't want to go to the TV. So you pick
+up a remote control and push a button. When you push that button, the little
+light at the end of the remote flashes with a series of short pulses. Each
+button gives a different pattern of flashes, and these flashes are in the
+infrared spectrum, so you can't see them. The TV has an infrared receiver that
+can see the flashes, and translates that into a command to turn the volume up.
+
+
+That's a pretty good system, but here were my problems with it:
+
+* The remote needs a line of sight to the TV receiver, or the flashes won't be
+  seen
+* We only have one remote, and sometimes it gets eaten by the couch or stolen by
+  imps
+* I'm too lazy to get up and grab the remote if I'm already sitting down  
+
+So I made something better, an online remote control.
+
+## What I made
+The first thing I needed to do was learn what the remote codes for my TV were. I
+used an Arduino connected to an infrared receiver, along with Ken Shirriff's
+[Arduino-IRremote](https://github.com/shirriff/Arduino-IRremote) library, to
+record the code for each button on my TV remote. Remember, these codes respond to
+a sequence of infrared pulses sent by the remote and read by the TV. For my Apex
+TV, the remote uses the [NEC Infrared Transmission
+Protocol](http://techdocs.altium.com/display/FPGA/NEC+Infrared+Transmission+Protocol) 
+to transmit an 8-bit command to the TV. I then made a Perl module containing a 
+hash of key-value pairs for each button and its corresponding code value. Now I
+have all of the codes for any command on my remote at my disposal.
+
+The next thing I need is something to take those codes, and translate them into
+infrared LED flashes. To do this, I used a [Spark Core](http://spark.io), a tiny
+WiFi-connected microcontroller. I put this on a breadboard and hooked it up to
+an IR LED, and then plugged it in with a micro-USB for power. The Core can be
+easily set up with your home WiFi network with an accompanying smartphone app,
+and once it is online you can use their cloud-based IDE to write code for it and
+flash it onto the device over the internet. Again using Shirriff's IR library, I
+wrote a small function shown here:
+
+    int input(String args){
+      int code = args.toInt();
+      irsend.sendNEC(code, 32);
+      return code;
+    }
+
+This function accepts a string for the remote code, and then uses that IR
+library to flash the IR LED connected to the D0 pin on the core. So now we have
+all the codes, and a way to translate those codes into IR flashes. Awesome!
+
+The next thing we need is a way to send those codes to the Spark Core from any
+internet-connected device, like my phone or laptop. All Spark Core's connected
+to the internet come with a REST API, which is a way to control the device
+through HTTP, the protocol you use to access the web. This could be the end, I
+could directly access the Spark Core by directing my browsers to the correct
+URLs for every action, but that would be a little crude. Instead, I'll throw on
+one more abstraction layer with a small Perl program.
+
+This program will be whats behind the web page that you can visit. In it, I will
+no longer be listening for remote codes like the Spark Core, but I will listen
+for pre-defined "actions." These actions can be as simple as "power," which will
+look up the remote code for the power button and send that, or they can be more
+complex. "Volume up" will take an arbitrary integer n after it, and then send 
+n+1 "volume up" codes, one to turn on the volume bar, and then n presses to
+raise the volume. "XBox" will press the "TV" button followed by two presses of
+"hdmi" to ensure that the TV will end on the HDMI input 2 every time, regardless
+of what input it had at the start. As you can see, this extra abstraction layer
+allows for more complex commands without worrying about the gritty details of
+the button codes being sent. In this program I can fine tune details like
+timing: how shortly after a button press with the TV accept another? I also
+implement a small "security" feature, where only requests coming from my
+apartment's IP address are accepted. 
+
+Now there is only one step left, and that is making the website. I used
+[Bootstrap](http://getbootstrap.com) to quickly and easily make a nice looking
+website with no web design skills whatsoever. Bootstrap comes with pre-made CSS
+for nice looking buttons, and support for multiple device sizes with its grid
+system. After brushing up a little on AJAX, I had a small site where you could
+press a button on the site, some Javascript throws a GET request to my Perl
+program, that program gives button codes to the Spark Core, the IR LED
+flashes, and the TV turn on.
+
+![Here's a picture of the remote next to my TV](/images/SparkRemote.jpg)
