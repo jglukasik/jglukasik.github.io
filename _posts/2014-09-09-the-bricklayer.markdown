@@ -69,14 +69,14 @@ about the Ironman race the day before, and he talks about how crazy things can
 happen to the human body when it is put under so much stress, and how he's come
 to that point after long days working himself. 
 
-We talk about the cranes in madison, and he tells me how they assemble and
-disassemble the ones here in madison with other, larger cranes. (There are self
+We talk about the cranes in Madison, and he tells me how they assemble and
+disassemble the ones here in Madison with other, larger cranes. (There are self
 assembling ones, but not these). He says he always befriends the crane
 operators, because they have a tough job up there and can't even see what they
 are doing a lot of the time, and they sit all up there for an entire workday,
 alone.
 
-He mentions that two bricklayers have died in madison this year. One fell 70
+He mentions that two bricklayers have died in Madison this year. One fell 70
 feet at edgewater, and the other on a project my lake monona. He tells me of his
 friend that broke his back falling 60 feet, and then was back on the job 2 years
 later. His friend was carrying a stone with a few other guys, when the
@@ -85,7 +85,7 @@ the scaffolding through an improperly-reinforced side railing.
 
 I end up leaving, he says he enjoyed being able to talk to another person other
 than his 8-year-old daughter for a bit. I told him to keep making awesome things
-all around madison (hes worked on the train station, the kohl center, the
+all around Madison (he's worked on the train station, the kohl center, the
 babcock house, the capitol). 
 
 That's when I met the bricklayer.

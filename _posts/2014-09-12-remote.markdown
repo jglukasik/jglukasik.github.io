@@ -89,6 +89,6 @@ for nice looking buttons, and support for multiple device sizes with its grid
 system. After brushing up a little on AJAX, I had a small site where you could
 press a button on the site, some Javascript throws a GET request to my Perl
 program, that program gives button codes to the Spark Core, the IR LED
-flashes, and the TV turn on.
+flashes, and the TV turns on.
 
 ![Here's a picture of the remote next to my TV](/images/SparkRemote.jpg)

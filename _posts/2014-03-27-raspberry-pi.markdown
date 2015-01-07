@@ -28,13 +28,18 @@ phone over 4G with an ssh app (I use JuiceSSH).
 After that, I attached a webcam to it.  I am using a Logitech usb webcam that I
 used with my old laptop.  I wrote a script that takes takes a picture from the
 webcam and keeps the pictures all neat and orderly in dated folders with
-timestamps for each picture.  The core of the script is this line: `ffmpeg -f
-video4linux2 -vframes 1 -i /dev/video0 $pic_name`, which uses ffmpeg to take a
-picture from the webcam, using video4linux to take care of the drivers. I then
-set cron to call the script every minute. After a full day passes, and I collect
-1440 images, I use MEncoder to stitch them all together into a nice lossless
-video: `mencoder ""mf://*.jpeg"" -mf fps=40 -o March25.avi -ovc lavc -lavcopts
-vcodec=ffv1`  My favorite timelapse I've taken so far has been the one of March
+timestamps for each picture.  The core of the script is this line: 
+
+    ffmpeg -f video4linux2 -vframes 1 -i /dev/video0 $pic_name
+ 
+which uses ffmpeg to take a picture from the webcam, using video4linux to take
+care of the drivers. I then set cron to call the script every minute. After a
+full day passes, and I collect 1440 images, I use MEncoder to stitch them all
+together into a nice lossless video: 
+
+    mencoder ""mf://*.jpeg"" -mf fps=40 -o March25.avi -ovc lavc -lavcopts vcodec=ffv1
+
+My favorite timelapse I've taken so far has been the one of March
 25th, as it snowed the night before. You also see a bit of me in the beginning
 when I took the camera down for a while.
 
@@ -51,10 +56,12 @@ work on a pi, so I could probably look deeper into it to get it running
 smoothly, but I also don't want to put too heavy of a load on my pi all the
 time.  Instead, I have a few simple, static html pages on the pi, with a link to
 this blog where it is currently located (on an Amazon Web Services EC2 cloud).
-<a href=""http://www.jglukasik.com/main.html"">Here is my pi-run website.</a>
+<strike>Here is my pi-run website.</strike> (Note: Stuff has sinced changed. My
+blog and my site are now the same thing. You're on it now)
 
 I wanted to come up with a unique name for the machine instead of the default
 raspberrypi, so I named it blueberrycake.  (Which, by the way, there is an
-excellent recipe for in [the family cookbook](cookbook.html))  I am loving this
-thing so far.  I have a lot of ideas for this little guy, I'll be sure to post
-here my progress.  "
+excellent recipe for in [the family cookbook](/2014/03/17/cookbook.html))  I am
+loving this thing so far.  I have a lot of ideas for this little guy, I'll be
+sure to post
+here my progress.
