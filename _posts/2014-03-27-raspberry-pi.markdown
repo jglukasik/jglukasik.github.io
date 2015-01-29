@@ -1,6 +1,7 @@
 ---
 title: My raspberry pi
 tags: blog
+layout: post-layout
 date: 2014-03-27
 ---
 I got a Raspberry Pi a little while ago (I actually got it on Pi Day), and it's

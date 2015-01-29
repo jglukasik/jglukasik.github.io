@@ -1,6 +1,7 @@
 ---
 title: The bricklayer
 tags: blog
+layout: post-layout
 date: 2014-09-09
 ---
 

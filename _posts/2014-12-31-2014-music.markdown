@@ -1,6 +1,7 @@
 ---
 title: Some music I enjoyed in 2014
 tags: blog
+layout: post-layout
 ---
 
 One day I stumbled upon my old Pandora account, and I was able to see a listing

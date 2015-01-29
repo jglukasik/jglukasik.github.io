@@ -1,6 +1,7 @@
 ---
 title: Raspberry Pi Snapchats
 tags: project
+layout: post-layout
 date: 2014-09-11
 description: Sending timelaspses as Snapchat stories.
 ---

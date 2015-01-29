@@ -1,6 +1,7 @@
 --- 
 title: The family cookbook 
 tags: blog
+layout: post-layout
 date: 2014-03-17 
 --- 
 
@@ -136,4 +137,3 @@ recipes.  Here's what I learned while doing so:
   parsed completely right or were spit out in a strange way.  Also, my code is a
   disaster.  That will be another goal for future projects: write code that I am
   willing so share with the world on Github or Bitbucket. 
-

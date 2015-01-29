@@ -1,6 +1,7 @@
 --- 
 title: On starting a blog 
 tags: blog
+layout: post-layout
 date: 2014-03-04 
 ---
 

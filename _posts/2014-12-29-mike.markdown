@@ -1,6 +1,7 @@
 --- 
 title: Mike
 tags: blog
+layout: post-layout
 ---
 
 You always had time to talk. I'd give you a call and start to walk, and for an

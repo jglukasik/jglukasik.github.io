@@ -1,6 +1,7 @@
 ---
 title: Setting up a PostGIS database with OpenStreetMaps data
 tags: blog
+layout: post-layout
 date: 2014-10-15
 ---
 
@@ -44,4 +45,3 @@ document the steps I took and explain them to my group members:
    note: the coordinates from osm are in the 900913 projection, and will need
    to be transformed (using PostGIS's command ST_Transform) to a more familiar
    lat/long projection like 4326)
-
