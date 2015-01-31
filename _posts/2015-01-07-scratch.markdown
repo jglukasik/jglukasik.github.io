@@ -1,0 +1,205 @@
+---
+title: Learning to code with Scratch
+tags: blog
+layout: post-layout
+---
+
+[Scratch](http://scratch.mit.edu) is a programming language designed by MIT to
+be used to teach kids programming, and it is awesome. Last fall, I volunteered
+to help the CS402 class, "Introducing Computer Science to K-12 Students." Every
+Wednesday I, along with 3 other UW students, went to a local Madison elementary
+school to lead "Scratch Club," an after-school program where 4th and 5th graders
+learn how to code. I love working with kids, and I love ranting about computer
+science, so this program was a perfect fit. Here are some of the things I
+learned:
+
+### Typing is hard for kids, programming is not
+
+The most obvious difference between Scratch and a more traditional programming
+language is it's lack of words, and abundance of colorful shapes. In Scratch,
+the user does not type in lines of code to make things happen, they drag and
+drop different shaped blocks that snap together like puzzle pieces.  Instead of
+typing out a while loop full of parenthesis and curly braces and spaces (and,
+probably, typos), they find the while block, and drag it into their workspace.
+Then, they see it has space inside to put more blocks, and they quickly
+internalize, 'OK, whatever blocks I put inside this big block will be repeated
+over and over again.' This physical intuition is key; humans are physical beings
+living in a physical world. There is a reason we use symbols like clipboards,
+cutting, and pasting when describing tasks we do on a computer (for the
+interested, look into
+[skeuomorphs](http://en.wikipedia.org/wiki/Skeuomorph#Digital_skeuomorphs)),
+they make sense to us! Scratch takes this idea even further, trying to translate
+computer science concepts like loops and if/else logic into physical objects
+that are intuitive for children.
+
+Not only do these blocks help the kids understand the concepts faster, they keep
+them from getting frustrated. Typing is tricky. You need to memorize the
+arbitrary locations for all the letters on the keyboard, and then move all your
+ten fingers in unison to spell out word after word. As a whole, kids don't like
+doing this. Many have trouble spelling to begin with even before their fingers
+hit the keys. They are still developing fine motor controls that we take for
+granted. Typing sucks and it's hard, but that doesn't mean that programming is
+hard! These kids have ideas, they know they want to make their character move
+across the screen and jump and collect cheesy-poofs, all they need to do is
+learn how to tell that to the computer. 
+
+When I was a baby, my parents taught me some basic sign language, like symbols
+for "more", "food", and "sleep." Babies develop the cognitive functionality to
+understand their own desires  before they develop the ability to speak, so the
+idea is that by giving them a way to express themselves with their hands the
+baby will be less frustrated and be able to learn communication skills while the
+speech centers of the brain lag behind (again, Wikipedia has [more
+info](http://en.wikipedia.org/wiki/Baby_sign_language)). I draw parallels
+between this idea and teaching kids to code. Kids aren't good at typing or
+spelling, but they have a ton of cool ideas. Give them a way to express these
+ideas using skills they already have, and they can build up their programming
+knowledge before they even touch a more full-featured language.
+
+### Code with Scratch, but not from scratch
+
+A lot of kids want to learn how to program to make video games, and that's
+great! If the end product of programming is a fun game, I think kids will be
+more likely to stick with the learning process. What reward does a kid see in
+learning how to spell, not failing a spelling test? Boring! (Now, _we_ know that
+spelling is one of several communication skills that are extremely beneficial to
+convey ideas to other people, but a kid's worldview is still pretty narrow in
+scope, and rewards need to be a little more concrete. And that's OK!). But there
+is one problem with wanting to learn to program to make a video game:
+programming video games is hard.
+
+Now maybe it wasn't so hard back in the old days of text-based adventures. Then,
+you'd learn some loops, some arrays holding various responses, and run each user
+input through some switch statements, and you'd have a game that was roughly at
+the technical level of the 'real' games of the time. Yeah, it wouldn't be as
+massive or in depth, but on a surface level, you made a game! Kids these days
+aren't content with text-based games. Kids these days are growing up with
+virtual reality. How are they going to make a virtual reality game like the ones
+they play with their friends? 
+
+They won't. At least not at first. Not until they understand object-oriented
+design, probably get familiar with some version control system, grasp a
+bit of vector calculus, maybe understand the basics of multi-threading to help
+with latency (and with that, being careful to pay attention to synchronization
+and race condition issues). And they'll have to learn a 'real' language, with
+all its own pitfalls in getting the environment set up, becoming proficient in
+reading documentation, and learning the SDK for some VR platform. Figuring out
+all that stuff will probably take a while.
+
+So what is a kid to do? They want to make a game, and they want to make a game
+_now_. They
+[fork](http://en.wikipedia.org/wiki/Fork_%28software_development%29). Forking is
+the concept in computer software of taking an existing project's source code,
+modifying it in some way, and then releasing it again as a new, slightly
+different piece of software. Forking is one way to avoid reinventing the wheel.
+Somebody else (or likely, many other people) put in the time and effort to get a
+piece of software into a working state. But if there is one little thing you
+wish you could change, you don't need to create the whole piece of software from
+scratch.  If the source code is available, you can dive into the code, find the
+bit that you want to modify, change it a little, recompile, and then you have
+your own software that works just how you like it. If you're reading this on an
+iOS or Android smartphone, the operating system you're using was, at some point,
+forked off from the original Unix. Somewhere deep down, your fancy phone is
+probably running some code written back in the 70's.
+
+But I'm getting off topic. The point is, forking is _powerful_. You don't have
+to start with a blank file and build an entire app. You take an existing app,
+and change a handful of lines of code, and then you're done. And Scratch teaches
+kids this powerful concept at a young age, with their version of forking:
+remixes.
+
+In Scratch, you can see the 'source code' (more like source blocks) of any game
+on their site. What you can then do is 'remix' the project, which takes all the
+code and throws it into your personal workspace. At our after-school program, I
+noticed a few kids made use of this feature with almost every game they played.
+They would play a platforming game, and then look into the code and find the
+'sprite' corresponding to some power-up, and then they would add a few blocks to
+spawn this power-up when they pressed a button. Or they would take the main
+character, and have it change colors every time it jumped.  Or they would just
+change the background music to their favorite song.
+
+Forking is how a kid can learn to program while still getting that instant
+gratification of being able to play a fun game. You can't make a full
+platforming game after spending 15 minutes learning how to make something move
+in Scratch. But, you could find another game that somebody made, and then add in
+some rain drops that are always falling from the top of the screen. Being able
+to see your code have some real effect in the world is an intoxicatingly
+satisfying feeling; it's exactly why I get so excited about computer science!
+Letting kids get a taste of this feeling at a very early point in their journey
+to learn programming is what will get them hooked and give them the motivation
+to continue to learn new things.
+
+I noticed that there seemed to be this feeling among some of the leaders in the
+class that this 'remixing' was akin to cheating, or stealing, with the thought
+process something like "They didn't learn how to make this game, they're just
+goofing off!" And I think this is the wrong way to approach it. When the kids
+look into the source of another game, they are learning a lot about programming
+that they never learn just starting their own projects from a blank canvas.
+Looking into another person's work teaches you about how a large project is
+organized. You see how complex everything looks from the large scale, but deep
+down its simple little parts working together. You learn the importance of being
+neat and tidy; using meaningful variable names and adding comments to help you
+understand things later. And I think most importantly of all: you learn that
+it's _not_ magic. Its all just code that someone else wrote, and you can write
+code too!
+
+I'm afraid that these lessons are ones that many of my peers in computer science
+never get a chance to learn in our current educational system. In most CS
+classes, you get assigned a project, work on it for a few weeks, maybe with one
+or two other people, then make sure it passes some tests and you turn it in. You
+never have to deal with long term maintainability, or dealing with the
+complexity of jumping into a foreign project made up of hundreds of files. I was
+lucky enough to land an awesome job as a Linux sysadmin for the College of
+Engineering where I was exposed to some of these topics, but that's not a luxury
+most CS students have. That's why I'm so excited that Scratch has remixes, it is
+teaching kids today the importance of working collaboratively in the modern
+world. They learn how to build off the hard work of others, and to be aware that
+all the work they do might be built on top of as well. 
+
+### Social Scratching
+
+Scratch is more than just a language, it also has its own built-in social
+network. The latest version of Scratch moved from a desktop application to a
+web-based one. This is great since it lets you work on your project from
+anywhere without worrying about moving files around. But it also sets the stage
+for their social network. You have your own profile on the site, with your own 
+private workspace. But you also have a space to display your favorite games
+you've played, to follow or be followed by other users, and to share your own
+projects that you've made. It's like a mini [Github](http://github.com) for
+kids.
+
+Not only are kids learning to program, they are learning how to program
+collaboratively online. They can make games with people they have never met, and
+know only by username. They learn how to communicate with people they never see.
+And they become comfortable sharing what they have made with others.
+
+When I was in elementary school I discovered [Game
+Maker](https://www.yoyogames.com/studio). In many ways it reminds me a lot of
+Scratch. It had a drag-and-drop interface like Scratch, and was an excellent
+introduction to programming. But it didn't have the same social features. I
+loved Game Maker, but no one else I knew did. I remember when I was in 6th grade
+I took a computer class in the summer, and was ecstatic when I found out that
+the teacher's son used Game Maker, and how I wrote down my username so she could
+give it to him to send me a message on the forums. 
+
+So it had that going for it: forums. But the forums scared me. I still remember
+sharing my first 'game' I made on the forums. It was a simple demo where a ball
+bounced around, and you could click on it to get points and make things happen.
+It was a terrible game, but I was proud that I was able to transform my blocks
+of code into an interactive application. I shared it on the forums, and I will
+never forget the first response: "this is the most retarded game ive ever
+played". So after that, I rarely posted on the forums.
+
+But I wish I did! I think of all the potential experiences, potential
+friendships, potential lessons I could have learned if I hadn't been so afraid
+to share my work with others. That's why I'm so glad Scratch integrates the
+social experience so tightly into the programming language itself. I hope that
+today's kids will be more comfortable sharing their creations. Two big things
+happen when they share. First, they can get help from their peers, and they can
+help their peers, and everybody leaves knowing more than they did before. But
+secondly, and more importantly, it builds their self-confidence. It teaches them
+to be comfortable sharing their creative productions, and how to handle
+criticism, and how to be a good critic of others. It teaches them skills that
+will only be more and more pertinent in today's interconnected, hyper-social
+world. 
+
+So yeah. Scratch is awesome.
