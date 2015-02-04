@@ -1,8 +1,9 @@
 ---
 title: My raspberry pi
-tags: blog
+tags: project 
 layout: post-layout
 date: 2014-03-27
+description: My first adventures with the pi
 ---
 I got a Raspberry Pi a little while ago (I actually got it on Pi Day), and it's
 pretty awesome.
@@ -62,7 +63,7 @@ blog and my site are now the same thing. You're on it now)
 
 I wanted to come up with a unique name for the machine instead of the default
 raspberrypi, so I named it blueberrycake.  (Which, by the way, there is an
-excellent recipe for in [the family cookbook](/2014/03/17/cookbook.html))  I am
-loving this thing so far.  I have a lot of ideas for this little guy, I'll be
-sure to post
-here my progress.
+excellent recipe for in [the family
+cookbook](http://www.jglukasik.com/blog/cookbook))  I am loving this thing so
+far.  I have a lot of ideas for this little guy, I'll be sure to post here my
+progress.
