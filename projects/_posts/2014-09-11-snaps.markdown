@@ -6,7 +6,14 @@ date: 2014-09-11
 description: Sending timelaspses as Snapchat stories.
 ---
 
-I have a Raspberry Pi connected to a USB Webcam that takes a picture every minute, and then stitches those 1440 pictures into a video at the end of the day. It then compresses that video and posts it as a "story" on Snapchat.
+[Check out some videos!](http://snap.jglukasik.com)
 
+I have a Raspberry Pi connected to a USB Webcam that takes a picture every
+minute, and then stitches those 1440 pictures into a video at the end of the
+day. It then compresses that video and posts it as a "story" on Snapchat.
 
-Note: this is currently down for repairs (apparently duct tape can't just be used for all of my structural engineering problems...). i'll get around to fixing it this weekend, in the meantime you can still view some previous videos [here](http://snap.jglukasik.com)
+It's currently under renovations, using a new Raspberry Pi camera, and having
+another camera running in a different location. Also, recent Snapchat updates
+have messed with things on that side of the project.
+
+This page will be updated with the latest happenings of this project.
