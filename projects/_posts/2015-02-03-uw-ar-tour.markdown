@@ -1,0 +1,62 @@
+---
+title: UW-Madison Augmented Reality Tour 
+tags: project
+layout: post-layout
+description: App for Google Glass to give you info on campus buildings
+---
+
+In the fall of 2014 I worked in the [Internet of Things
+Lab](http://http://www.iotlab.wisc.edu/) here at the University of
+Wisconsin-Madison. I first saw the group at their open house in the spring of
+2014, where I got to try out some really cool tech, like the Oculus Rift and
+Google Glass. I knew I wanted to work with some of that, so when fall semester
+rolled around I submitted my project idea: an application for Google Glass that
+uses the users GPS and compass readings to give information on the building the
+user is currently looking at. I had three awesome group members, Nick Sielicki,
+Amy Slawson, and Nate Lading, and here's what we made:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oLUxNp9Jr7Y"
+frameborder="0" allowfullscreen></iframe>
+
+The app works like this. The user wears Glass and enters our app, and the users
+GPS position is sent to our server. There, it is taken by a small python
+webserver written with web.py that connects with a PostgreSQL database with a
+PostGIS (Geographic Information Systems) extension (For more info, see my post
+on [setting it up](http://jglukasik.com/blog/madison-database)). Then, it does a
+spatial query to get the information we want, and here's how it does it.
+
+First, we want to get all the buildings within some radius of the user. Once we
+have these, we want to look at each corner of each building. For this collection
+of points we have for each building, we then compute the angle that each point
+makes with the user and North. Then from these angles (for a single building),
+we get the minimum and maximum angles, and those are the left-most and
+right-most headings for that given building. Now what we have is a list of
+buildings in the users view, along with the range of degree headings that each
+building takes up in the users field of view. 
+
+Note there is an exception we had to worry about with this method of getting
+headings: if a building straddles North. In this case, getting the point with a
+max heading will return something close to 359, and the min will be close to 1,
+regardless of where the actual left- and right-most points are. To fix this, we
+need to use a different reference point when computing the angles, so we compute
+the angle between the user, the building corners, and South.
+
+So now that we have each building and their heading ranges, we send this back in
+a nice JSON formatted response. The Glass app itself then can read this to draw
+the compass view with each building represented as a colored rectangle. Then,
+when the user moves their head, the Glass gets the current compass heading from
+the geomagnetic field sensor and rotates the compass view on the display. If the
+user taps on the side of the Glass when they are looking at a building, an
+information card pops up.
+
+While I focused on the back-end with setting up the server and database, and
+figuring out the queries we needed, I helped with the Glass app in a pair
+programming setting. Coding for Glass is almost the exact same as making an
+Android app, as Google tried to make Glass a familiar environment for those used
+to Android programming. We didn't start from scratch with the app, but instead
+forked a Google example project, a compass. We added code to connect with our
+server and give GPS coordinates, and then parse the response and draw the
+buildings on the compass view.
+
+Check out the [server](https://github.com/jglukasik/mdb_server) and 
+[app](https://github.com/jglukasik/madisonar) code on github. 
